@@ -26,14 +26,14 @@
     --amber:#f59e0b;
     --red:#ef4444;
     --shadow:0 1px 2px rgba(16,24,40,.04), 0 10px 30px -14px rgba(16,24,40,.18);
-    --tg:#229ED9; /* Telegram brand blue */
+    --tg:#229ED9;
   }
   html,body{height:100%}
   body{
     font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
     background:var(--bg);
     color:var(--text);
-    padding:26px 18px 110px; /* extra bottom padding for FAB */
+    padding:26px 18px 70px;
     -webkit-font-smoothing:antialiased;
     min-height:100vh;
   }
@@ -48,22 +48,10 @@
 
   /* ---------- Ad slots (top) ---------- */
   .ad-strip{
-    max-width:1060px;
-    margin:0 auto 20px;
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items:flex-start;
-    gap:12px;
+    max-width:1060px;margin:0 auto 20px;
+    display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:12px;
   }
-  .ad-slot{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    overflow:hidden;
-    background:transparent;
-    border-radius:12px;
-  }
+  .ad-slot{display:flex;justify-content:center;align-items:center;overflow:hidden;background:transparent;border-radius:12px}
   .ad-slot:empty{display:none}
   .ad-slot iframe{max-width:100%;display:block}
 
@@ -81,40 +69,51 @@
   }
   .brand h1{font-size:19px;font-weight:800;letter-spacing:-.4px}
   .brand p{font-size:12.5px;color:var(--muted);font-weight:500;margin-top:1px}
-
-  /* NEW: Telegram CTA in header */
-  .tg-cta{
-    display:inline-flex;align-items:center;gap:8px;
-    background:linear-gradient(135deg,var(--tg),#1a7fb8);
-    color:#fff;text-decoration:none;
-    font-weight:700;font-size:14px;
-    padding:12px 22px;border-radius:14px;
-    box-shadow:0 10px 24px -8px rgba(34,158,217,.7);
-    transition:.2s;white-space:nowrap;
-  }
-  .tg-cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(34,158,217,.85)}
-  .tg-cta svg{width:20px;height:20px;fill:currentColor}
-
   .date-pill{
     background:var(--card);border:1px solid var(--line);
     padding:9px 16px;border-radius:999px;font-size:13px;font-weight:600;
     color:#4b5163;box-shadow:var(--shadow);
   }
 
-  /* ---------- Layout ---------- */
-  .grid{
-    display:grid;grid-template-columns:1.4fr .85fr;gap:18px;align-items:start;
+  /* ---------- NEW: Big Centered Telegram Button ---------- */
+  .tg-banner{
+    max-width:620px;
+    margin:0 auto 24px;
+    text-align:center;
   }
-  @media (max-width:880px){
-    .grid{grid-template-columns:1fr}
+  .tg-cta-big{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    width:100%;
+    background:linear-gradient(135deg,#229ED9,#1a7fb8);
+    color:#fff;text-decoration:none;
+    font-weight:800;font-size:17px;letter-spacing:.2px;
+    padding:20px 30px;border-radius:18px;
+    box-shadow:0 16px 36px -10px rgba(34,158,217,.8);
+    transition:transform .2s, box-shadow .2s;
+    animation:tgPulse 2.8s ease-in-out infinite;
+  }
+  .tg-cta-big:hover{
+    transform:translateY(-3px) scale(1.015);
+    box-shadow:0 22px 44px -12px rgba(34,158,217,.95);
+    animation-play-state:paused;
+  }
+  .tg-cta-big:active{transform:translateY(0) scale(.99)}
+  .tg-cta-big svg{width:26px;height:26px;fill:currentColor;flex-shrink:0}
+  .tg-note{
+    margin-top:9px;font-size:11.5px;color:var(--muted);font-weight:500;
+  }
+  @keyframes tgPulse{
+    0%,100%{box-shadow:0 16px 36px -10px rgba(34,158,217,.8)}
+    50%{box-shadow:0 16px 36px -10px rgba(34,158,217,.8), 0 0 0 10px rgba(34,158,217,.10)}
   }
 
+  /* ---------- Layout ---------- */
+  .grid{display:grid;grid-template-columns:1.4fr .85fr;gap:18px;align-items:start}
+  @media (max-width:880px){ .grid{grid-template-columns:1fr} }
+
   .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:22px;
-    padding:22px;
-    box-shadow:var(--shadow);
+    background:var(--card);border:1px solid var(--line);
+    border-radius:22px;padding:22px;box-shadow:var(--shadow);
   }
   .card h2{font-size:14.5px;font-weight:700;letter-spacing:-.2px}
 
@@ -125,7 +124,6 @@
     font-size:12px;font-weight:700;padding:4px 11px;border-radius:999px;
     min-width:28px;text-align:center;
   }
-
   .add-row{display:flex;gap:8px;margin-bottom:14px}
   .add-row input{
     flex:1;min-width:0;
@@ -273,34 +271,8 @@
     margin-top:22px;font-weight:500;
   }
 
-  /* ---------- NEW: Floating Telegram Button ---------- */
-  .tg-fab{
-    position:fixed;bottom:22px;right:22px;z-index:999;
-    width:60px;height:60px;border-radius:50%;
-    display:grid;place-items:center;
-    background:linear-gradient(135deg,var(--tg),#1a7fb8);
-    color:#fff;text-decoration:none;
-    box-shadow:0 12px 30px -6px rgba(34,158,217,.7);
-    transition:.22s;
-    animation:tgFloat 3s ease-in-out infinite;
-  }
-  .tg-fab:hover{transform:scale(1.08);box-shadow:0 16px 36px -6px rgba(34,158,217,.9)}
-  .tg-fab svg{width:28px;height:28px;fill:currentColor}
-  @keyframes tgFloat{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-6px)}
-  }
-  .tg-fab::after{
-    content:'Join Telegram';
-    position:absolute;right:70px;top:50%;transform:translateY(-50%);
-    background:#1a1f2e;color:#fff;font-size:11.5px;font-weight:600;
-    padding:6px 10px;border-radius:8px;white-space:nowrap;
-    opacity:0;pointer-events:none;transition:.18s;
-  }
-  .tg-fab:hover::after{opacity:1}
-
   @media (max-width:520px){
-    body{padding:18px 12px 100px}
+    body{padding:18px 12px 60px}
     .card{padding:18px;border-radius:19px}
     .add-row{flex-wrap:wrap}
     .add-row input{flex:1 1 100%}
@@ -308,9 +280,8 @@
     .brand h1{font-size:17px}
     .del{opacity:1}
     #time{font-size:32px}
-    .tg-cta{padding:10px 16px;font-size:13px}
-    .tg-fab{width:54px;height:54px;bottom:16px;right:16px}
-    .tg-fab svg{width:24px;height:24px}
+    .tg-cta-big{font-size:15px;padding:17px 20px;gap:10px}
+    .tg-cta-big svg{width:22px;height:22px}
   }
 </style>
 </head>
@@ -358,21 +329,23 @@
         <p id="greeting">Hello there</p>
       </div>
     </div>
+    <div class="date-pill" id="today">—</div>
+  </header>
 
-    <!-- 🔥 BADA TELEGRAM BUTTON (Header) -->
-    <a class="tg-cta"
+  <!-- 🔥 BADA TELEGRAM BUTTON — page ke beech, centered -->
+  <div class="tg-banner">
+    <a class="tg-cta-big"
        href="https://t.me/hotvideoslinks002"
        target="_blank"
        rel="noopener noreferrer">
       <svg viewBox="0 0 24 24"><path d="M9.04 15.51l-.37 5.23c.53 0 .76-.23 1.04-.5l2.5-2.4 5.18 3.8c.95.52 1.63.25 1.88-.88l3.4-15.97c.32-1.48-.54-2.06-1.47-1.71L1.6 9.9c-1.44.56-1.42 1.37-.25 1.73l4.7 1.47 10.9-6.87c.51-.32.98-.14.6.18"/></svg>
-      Join Telegram
+      Join Our Telegram Channel
     </a>
-
-    <div class="date-pill" id="today">—</div>
-  </header>
+    <p class="tg-note">18+ only · Join at your own discretion</p>
+  </div>
 
   <main class="grid">
-    <!-- TASKS (unchanged) -->
+    <!-- TASKS -->
     <section class="card tasks-card">
       <div class="card-head">
         <h2>Your Tasks</h2>
@@ -401,7 +374,7 @@
       <button class="clear-btn" id="clearBtn" style="display:none">Clear completed tasks</button>
     </section>
 
-    <!-- SIDE (unchanged) -->
+    <!-- SIDE -->
     <aside class="side">
       <div class="card timer-card">
         <h2>Focus Timer</h2>
@@ -446,15 +419,6 @@
 
   <p class="footer-note">Your tasks are saved locally in this browser.</p>
 </div>
-
-<!-- 🔥 FLOATING TELEGRAM BUTTON -->
-<a class="tg-fab"
-   href="https://t.me/hotvideoslinks002"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Join our Telegram channel">
-  <svg viewBox="0 0 24 24"><path d="M9.04 15.51l-.37 5.23c.53 0 .76-.23 1.04-.5l2.5-2.4 5.18 3.8c.95.52 1.63.25 1.88-.88l3.4-15.97c.32-1.48-.54-2.06-1.47-1.71L1.6 9.9c-1.44.56-1.42 1.37-.25 1.73l4.7 1.47 10.9-6.87c.51-.32.98-.14.6.18"/></svg>
-</a>
 
 <script>
 /* ============ STATE ============ */
