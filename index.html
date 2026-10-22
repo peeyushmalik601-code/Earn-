@@ -26,13 +26,14 @@
     --amber:#f59e0b;
     --red:#ef4444;
     --shadow:0 1px 2px rgba(16,24,40,.04), 0 10px 30px -14px rgba(16,24,40,.18);
+    --tg:#229ED9; /* Telegram brand blue */
   }
   html,body{height:100%}
   body{
     font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
     background:var(--bg);
     color:var(--text);
-    padding:26px 18px 70px;
+    padding:26px 18px 110px; /* extra bottom padding for FAB */
     -webkit-font-smoothing:antialiased;
     min-height:100vh;
   }
@@ -80,6 +81,20 @@
   }
   .brand h1{font-size:19px;font-weight:800;letter-spacing:-.4px}
   .brand p{font-size:12.5px;color:var(--muted);font-weight:500;margin-top:1px}
+
+  /* NEW: Telegram CTA in header */
+  .tg-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(135deg,var(--tg),#1a7fb8);
+    color:#fff;text-decoration:none;
+    font-weight:700;font-size:14px;
+    padding:12px 22px;border-radius:14px;
+    box-shadow:0 10px 24px -8px rgba(34,158,217,.7);
+    transition:.2s;white-space:nowrap;
+  }
+  .tg-cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px -10px rgba(34,158,217,.85)}
+  .tg-cta svg{width:20px;height:20px;fill:currentColor}
+
   .date-pill{
     background:var(--card);border:1px solid var(--line);
     padding:9px 16px;border-radius:999px;font-size:13px;font-weight:600;
@@ -258,8 +273,34 @@
     margin-top:22px;font-weight:500;
   }
 
+  /* ---------- NEW: Floating Telegram Button ---------- */
+  .tg-fab{
+    position:fixed;bottom:22px;right:22px;z-index:999;
+    width:60px;height:60px;border-radius:50%;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--tg),#1a7fb8);
+    color:#fff;text-decoration:none;
+    box-shadow:0 12px 30px -6px rgba(34,158,217,.7);
+    transition:.22s;
+    animation:tgFloat 3s ease-in-out infinite;
+  }
+  .tg-fab:hover{transform:scale(1.08);box-shadow:0 16px 36px -6px rgba(34,158,217,.9)}
+  .tg-fab svg{width:28px;height:28px;fill:currentColor}
+  @keyframes tgFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-6px)}
+  }
+  .tg-fab::after{
+    content:'Join Telegram';
+    position:absolute;right:70px;top:50%;transform:translateY(-50%);
+    background:#1a1f2e;color:#fff;font-size:11.5px;font-weight:600;
+    padding:6px 10px;border-radius:8px;white-space:nowrap;
+    opacity:0;pointer-events:none;transition:.18s;
+  }
+  .tg-fab:hover::after{opacity:1}
+
   @media (max-width:520px){
-    body{padding:18px 12px 60px}
+    body{padding:18px 12px 100px}
     .card{padding:18px;border-radius:19px}
     .add-row{flex-wrap:wrap}
     .add-row input{flex:1 1 100%}
@@ -267,40 +308,29 @@
     .brand h1{font-size:17px}
     .del{opacity:1}
     #time{font-size:32px}
+    .tg-cta{padding:10px 16px;font-size:13px}
+    .tg-fab{width:54px;height:54px;bottom:16px;right:16px}
+    .tg-fab svg{width:24px;height:24px}
   }
 </style>
 </head>
 <body>
 
-<!-- ================= ADS (NOW AT TOP) ================= -->
+<!-- ================= ADS (TOP) ================= -->
 <div class="ad-strip">
   <div class="ad-slot">
     <script async="async" data-cfasync="false" src="https://pl31959241.profitableratecpmnetwork.com/45cd994762a9c22fcca61aa5132ac072/invoke.js"></script>
     <div id="container-45cd994762a9c22fcca61aa5132ac072"></div>
   </div>
-
   <div class="ad-slot">
     <script>
-      atOptions = {
-        'key' : 'b5e9a04b3383e1d31cd450693283a5d1',
-        'format' : 'iframe',
-        'height' : 600,
-        'width' : 160,
-        'params' : {}
-      };
+      atOptions = {'key':'b5e9a04b3383e1d31cd450693283a5d1','format':'iframe','height':600,'width':160,'params':{}};
     </script>
     <script src="https://bauval.org/22/b5e9a04b3383e1d31cd450693283a5d1"></script>
   </div>
-
   <div class="ad-slot">
     <script>
-      atOptions = {
-        'key' : '77a28573c5ae9842b26f3869a7fe3b57',
-        'format' : 'iframe',
-        'height' : 300,
-        'width' : 160,
-        'params' : {}
-      };
+      atOptions = {'key':'77a28573c5ae9842b26f3869a7fe3b57','format':'iframe','height':300,'width':160,'params':{}};
     </script>
     <script src="https://bauval.org/22/77a28573c5ae9842b26f3869a7fe3b57"></script>
   </div>
@@ -309,32 +339,12 @@
 <div class="ad-strip">
   <div class="ad-slot">
     <script>
-      atOptions = {
-        'key' : '4e9b11f2ab636512b8f639bb42ee719d',
-        'format' : 'iframe',
-        'height' : 60,
-        'width' : 468,
-        'params' : {}
-      };
+      atOptions = {'key':'4e9b11f2ab636512b8f639bb42ee719d','format':'iframe','height':60,'width':468,'params':{}};
     </script>
     <script src="https://bauval.org/22/4e9b11f2ab636512b8f639bb42ee719d"></script>
   </div>
-
   <div class="ad-slot">
     <script src="https://pl31959478.profitableratecpmnetwork.com/72/46/65/7246654fc7b1f42b0501c55f276edc60.js"></script>
-  </div>
-
-  <div class="ad-slot">
-    <script>
-      atOptions = {
-        'key' : '4e9b11f2ab636512b8f639bb42ee719d',
-        'format' : 'iframe',
-        'height' : 60,
-        'width' : 468,
-        'params' : {}
-      };
-    </script>
-    <script src="https://bauval.org/22/4e9b11f2ab636512b8f639bb42ee719d"></script>
   </div>
 </div>
 <!-- ================= /ADS ================= -->
@@ -348,17 +358,26 @@
         <p id="greeting">Hello there</p>
       </div>
     </div>
+
+    <!-- 🔥 BADA TELEGRAM BUTTON (Header) -->
+    <a class="tg-cta"
+       href="https://t.me/hotvideoslinks002"
+       target="_blank"
+       rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24"><path d="M9.04 15.51l-.37 5.23c.53 0 .76-.23 1.04-.5l2.5-2.4 5.18 3.8c.95.52 1.63.25 1.88-.88l3.4-15.97c.32-1.48-.54-2.06-1.47-1.71L1.6 9.9c-1.44.56-1.42 1.37-.25 1.73l4.7 1.47 10.9-6.87c.51-.32.98-.14.6.18"/></svg>
+      Join Telegram
+    </a>
+
     <div class="date-pill" id="today">—</div>
   </header>
 
   <main class="grid">
-    <!-- TASKS -->
+    <!-- TASKS (unchanged) -->
     <section class="card tasks-card">
       <div class="card-head">
         <h2>Your Tasks</h2>
         <span class="count-pill" id="countPill">0</span>
       </div>
-
       <div class="add-row">
         <input id="taskInput" type="text" placeholder="What needs to be done?" maxlength="120" />
         <select id="priority" aria-label="Priority">
@@ -368,25 +387,21 @@
         </select>
         <button id="addBtn" class="btn-primary">Add</button>
       </div>
-
       <div class="filters" id="filters">
         <button class="chip active" data-filter="all">All</button>
         <button class="chip" data-filter="active">Active</button>
         <button class="chip" data-filter="done">Completed</button>
       </div>
-
       <ul class="task-list" id="taskList"></ul>
-
       <div class="empty" id="empty" style="display:none">
         <div class="empty-icon">🗒️</div>
         <p>Nothing here yet</p>
         <span>Add your first task above to get started</span>
       </div>
-
       <button class="clear-btn" id="clearBtn" style="display:none">Clear completed tasks</button>
     </section>
 
-    <!-- SIDE -->
+    <!-- SIDE (unchanged) -->
     <aside class="side">
       <div class="card timer-card">
         <h2>Focus Timer</h2>
@@ -432,34 +447,32 @@
   <p class="footer-note">Your tasks are saved locally in this browser.</p>
 </div>
 
+<!-- 🔥 FLOATING TELEGRAM BUTTON -->
+<a class="tg-fab"
+   href="https://t.me/hotvideoslinks002"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Join our Telegram channel">
+  <svg viewBox="0 0 24 24"><path d="M9.04 15.51l-.37 5.23c.53 0 .76-.23 1.04-.5l2.5-2.4 5.18 3.8c.95.52 1.63.25 1.88-.88l3.4-15.97c.32-1.48-.54-2.06-1.47-1.71L1.6 9.9c-1.44.56-1.42 1.37-.25 1.73l4.7 1.47 10.9-6.87c.51-.32.98-.14.6.18"/></svg>
+</a>
+
 <script>
 /* ============ STATE ============ */
 const STORAGE_KEY = 'focusboard.tasks.v1';
 let tasks = [];
 let filter = 'all';
-
 const $ = id => document.getElementById(id);
 
-/* ============ STORAGE ============ */
 function loadTasks(){
-  try{
-    const raw = localStorage.getItem(STORAGE_KEY);
-    tasks = raw ? JSON.parse(raw) : [];
-    if(!Array.isArray(tasks)) tasks = [];
-  }catch(e){ tasks = []; }
+  try{ const raw = localStorage.getItem(STORAGE_KEY); tasks = raw ? JSON.parse(raw) : []; if(!Array.isArray(tasks)) tasks = []; }
+  catch(e){ tasks = []; }
 }
-function saveTasks(){
-  try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); }catch(e){}
-}
+function saveTasks(){ try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks)); }catch(e){} }
 
-/* ============ HELPERS ============ */
 function escapeHtml(str){
-  return str.replace(/[&<>"']/g, c => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[c]));
+  return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
-/* ============ RENDER ============ */
 function getVisibleTasks(){
   if(filter === 'active') return tasks.filter(t => !t.done);
   if(filter === 'done')   return tasks.filter(t => t.done);
@@ -469,7 +482,6 @@ function getVisibleTasks(){
 function render(){
   const list = $('taskList');
   const visible = getVisibleTasks();
-
   list.innerHTML = visible.map(t => `
     <li class="task ${t.done ? 'done' : ''}" data-id="${t.id}">
       <button class="check" data-act="toggle" aria-label="Toggle task">
@@ -482,178 +494,89 @@ function render(){
       <button class="del" data-act="delete" aria-label="Delete task">
         <svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"></path></svg>
       </button>
-    </li>
-  `).join('');
-
+    </li>`).join('');
   $('empty').style.display = visible.length ? 'none' : 'block';
-
-  const total  = tasks.length;
-  const done   = tasks.filter(t => t.done).length;
-  const active = total - done;
-  const pct    = total ? Math.round((done / total) * 100) : 0;
-
+  const total = tasks.length, done = tasks.filter(t => t.done).length, active = total - done;
+  const pct = total ? Math.round((done/total)*100) : 0;
   $('countPill').textContent = active;
   $('statTotal').textContent = total;
   $('statDone').textContent  = done;
   $('statActive').textContent = active;
   $('barFill').style.width = pct + '%';
-
   const note = $('progressNote');
-  if(total === 0)      note.textContent = "Let's get started ✨";
+  if(total === 0) note.textContent = "Let's get started ✨";
   else if(pct === 100) note.textContent = 'All done — amazing work! 🎉';
-  else if(pct >= 60)   note.textContent = `${pct}% complete — almost there! 💪`;
-  else if(pct > 0)     note.textContent = `${pct}% complete — keep going! 🚀`;
-  else                 note.textContent = 'Ready when you are 🌱';
-
+  else if(pct >= 60) note.textContent = `${pct}% complete — almost there! 💪`;
+  else if(pct > 0) note.textContent = `${pct}% complete — keep going! 🚀`;
+  else note.textContent = 'Ready when you are 🌱';
   $('clearBtn').style.display = done > 0 ? 'block' : 'none';
 }
 
-/* ============ ACTIONS ============ */
 function addTask(){
   const input = $('taskInput');
   const text = input.value.trim();
   if(!text) { input.focus(); return; }
-
-  tasks.unshift({
-    id: Date.now().toString(36) + Math.random().toString(36).slice(2,6),
-    text,
-    done: false,
-    priority: $('priority').value,
-    createdAt: Date.now()
-  });
-
-  input.value = '';
-  input.focus();
-  saveTasks();
-  render();
+  tasks.unshift({ id: Date.now().toString(36)+Math.random().toString(36).slice(2,6), text, done:false, priority:$('priority').value, createdAt:Date.now() });
+  input.value = ''; input.focus(); saveTasks(); render();
 }
 
 $('addBtn').addEventListener('click', addTask);
-$('taskInput').addEventListener('keydown', e => {
-  if(e.key === 'Enter') addTask();
-});
-
+$('taskInput').addEventListener('keydown', e => { if(e.key === 'Enter') addTask(); });
 $('taskList').addEventListener('click', e => {
-  const btn = e.target.closest('button[data-act]');
-  if(!btn) return;
-  const li = btn.closest('.task');
-  const id = li.dataset.id;
-  const task = tasks.find(t => t.id === id);
-  if(!task) return;
-
-  if(btn.dataset.act === 'toggle'){
-    task.done = !task.done;
-  } else if(btn.dataset.act === 'delete'){
-    tasks = tasks.filter(t => t.id !== id);
-  }
-  saveTasks();
-  render();
+  const btn = e.target.closest('button[data-act]'); if(!btn) return;
+  const li = btn.closest('.task'); const id = li.dataset.id;
+  const task = tasks.find(t => t.id === id); if(!task) return;
+  if(btn.dataset.act === 'toggle') task.done = !task.done;
+  else if(btn.dataset.act === 'delete') tasks = tasks.filter(t => t.id !== id);
+  saveTasks(); render();
 });
-
 $('filters').addEventListener('click', e => {
-  const chip = e.target.closest('.chip');
-  if(!chip) return;
+  const chip = e.target.closest('.chip'); if(!chip) return;
   filter = chip.dataset.filter;
   [...$('filters').children].forEach(c => c.classList.toggle('active', c === chip));
   render();
 });
-
-$('clearBtn').addEventListener('click', () => {
-  tasks = tasks.filter(t => !t.done);
-  saveTasks();
-  render();
-});
+$('clearBtn').addEventListener('click', () => { tasks = tasks.filter(t => !t.done); saveTasks(); render(); });
 
 /* ============ TIMER ============ */
 const CIRC = 2 * Math.PI * 44;
 $('ringFg').style.strokeDasharray = CIRC;
-
-let totalSec = 25 * 60;
-let leftSec  = totalSec;
-let running  = false;
-let tickId   = null;
-let currentMode = 'Focus';
-
-function fmt(s){
-  const m = Math.floor(s / 60);
-  const sec = s % 60;
-  return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
-}
-
-function paintTimer(){
-  $('time').textContent = fmt(leftSec);
-  const progress = totalSec ? leftSec / totalSec : 0;
-  $('ringFg').style.strokeDashoffset = CIRC * (1 - progress);
-}
-
-function stopTimer(){
-  running = false;
-  clearInterval(tickId);
-  tickId = null;
-  $('startBtn').textContent = 'Start';
-}
-
+let totalSec = 25*60, leftSec = totalSec, running = false, tickId = null, currentMode = 'Focus';
+function fmt(s){ return `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`; }
+function paintTimer(){ $('time').textContent = fmt(leftSec); const progress = totalSec ? leftSec/totalSec : 0; $('ringFg').style.strokeDashoffset = CIRC*(1-progress); }
+function stopTimer(){ running = false; clearInterval(tickId); tickId = null; $('startBtn').textContent = 'Start'; }
 function startTimer(){
-  if(running) { stopTimer(); return; }
+  if(running){ stopTimer(); return; }
   if(leftSec <= 0) leftSec = totalSec;
-  running = true;
-  $('startBtn').textContent = 'Pause';
-
+  running = true; $('startBtn').textContent = 'Pause';
   tickId = setInterval(() => {
     leftSec--;
-    if(leftSec <= 0){
-      leftSec = 0;
-      paintTimer();
-      stopTimer();
-      $('mode').textContent = 'Done!';
-      return;
-    }
+    if(leftSec <= 0){ leftSec = 0; paintTimer(); stopTimer(); $('mode').textContent = 'Done!'; return; }
     paintTimer();
   }, 1000);
 }
-
 $('startBtn').addEventListener('click', startTimer);
-
-$('resetBtn').addEventListener('click', () => {
-  stopTimer();
-  leftSec = totalSec;
-  $('mode').textContent = currentMode;
-  paintTimer();
-});
-
+$('resetBtn').addEventListener('click', () => { stopTimer(); leftSec = totalSec; $('mode').textContent = currentMode; paintTimer(); });
 document.querySelectorAll('.modes .chip').forEach(chip => {
   chip.addEventListener('click', () => {
     document.querySelectorAll('.modes .chip').forEach(c => c.classList.remove('active'));
-    chip.classList.add('active');
-    stopTimer();
-    totalSec = parseInt(chip.dataset.min, 10) * 60;
-    leftSec = totalSec;
-    currentMode = chip.dataset.label;
-    $('mode').textContent = currentMode;
-    paintTimer();
+    chip.classList.add('active'); stopTimer();
+    totalSec = parseInt(chip.dataset.min,10)*60; leftSec = totalSec;
+    currentMode = chip.dataset.label; $('mode').textContent = currentMode; paintTimer();
   });
 });
 
-/* ============ HEADER INFO ============ */
+/* ============ HEADER ============ */
 function initHeader(){
-  const now = new Date();
-  const h = now.getHours();
+  const now = new Date(); const h = now.getHours();
   let greet = 'Good evening';
-  if(h < 12) greet = 'Good morning';
-  else if(h < 17) greet = 'Good afternoon';
-
+  if(h < 12) greet = 'Good morning'; else if(h < 17) greet = 'Good afternoon';
   $('greeting').textContent = `${greet} — let's make today count`;
-  $('today').textContent = now.toLocaleDateString(undefined, {
-    weekday:'short', month:'short', day:'numeric'
-  });
+  $('today').textContent = now.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'});
 }
 
 /* ============ BOOT ============ */
-loadTasks();
-initHeader();
-paintTimer();
-render();
-$('taskInput').focus();
+loadTasks(); initHeader(); paintTimer(); render(); $('taskInput').focus();
 </script>
 </body>
 </html>
