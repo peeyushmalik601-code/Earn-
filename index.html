@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FocusBoard — Tasks & Focus Timer</title>
 
-<!-- Ads script -->
+<!-- Ads script (head) -->
 <script async src="https://pl31959207.profitableratecpmnetwork.com/bf/ea/df/bfeadf8d1cbe279a5ede14ea4308692c.js"></script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +44,27 @@
   }
 
   .app{max-width:1060px;margin:0 auto}
+
+  /* ---------- Ad slots (top) ---------- */
+  .ad-strip{
+    max-width:1060px;
+    margin:0 auto 20px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:flex-start;
+    gap:12px;
+  }
+  .ad-slot{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    background:transparent;
+    border-radius:12px;
+  }
+  .ad-slot:empty{display:none}
+  .ad-slot iframe{max-width:100%;display:block}
 
   /* ---------- Top bar ---------- */
   .topbar{
@@ -251,6 +272,73 @@
 </head>
 <body>
 
+<!-- ================= ADS (NOW AT TOP) ================= -->
+<div class="ad-strip">
+  <div class="ad-slot">
+    <script async="async" data-cfasync="false" src="https://pl31959241.profitableratecpmnetwork.com/45cd994762a9c22fcca61aa5132ac072/invoke.js"></script>
+    <div id="container-45cd994762a9c22fcca61aa5132ac072"></div>
+  </div>
+
+  <div class="ad-slot">
+    <script>
+      atOptions = {
+        'key' : 'b5e9a04b3383e1d31cd450693283a5d1',
+        'format' : 'iframe',
+        'height' : 600,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script src="https://bauval.org/22/b5e9a04b3383e1d31cd450693283a5d1"></script>
+  </div>
+
+  <div class="ad-slot">
+    <script>
+      atOptions = {
+        'key' : '77a28573c5ae9842b26f3869a7fe3b57',
+        'format' : 'iframe',
+        'height' : 300,
+        'width' : 160,
+        'params' : {}
+      };
+    </script>
+    <script src="https://bauval.org/22/77a28573c5ae9842b26f3869a7fe3b57"></script>
+  </div>
+</div>
+
+<div class="ad-strip">
+  <div class="ad-slot">
+    <script>
+      atOptions = {
+        'key' : '4e9b11f2ab636512b8f639bb42ee719d',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://bauval.org/22/4e9b11f2ab636512b8f639bb42ee719d"></script>
+  </div>
+
+  <div class="ad-slot">
+    <script src="https://pl31959478.profitableratecpmnetwork.com/72/46/65/7246654fc7b1f42b0501c55f276edc60.js"></script>
+  </div>
+
+  <div class="ad-slot">
+    <script>
+      atOptions = {
+        'key' : '4e9b11f2ab636512b8f639bb42ee719d',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script src="https://bauval.org/22/4e9b11f2ab636512b8f639bb42ee719d"></script>
+  </div>
+</div>
+<!-- ================= /ADS ================= -->
+
 <div class="app">
   <header class="topbar">
     <div class="brand">
@@ -397,10 +485,8 @@ function render(){
     </li>
   `).join('');
 
-  // Empty state
   $('empty').style.display = visible.length ? 'none' : 'block';
 
-  // Counts
   const total  = tasks.length;
   const done   = tasks.filter(t => t.done).length;
   const active = total - done;
@@ -419,7 +505,6 @@ function render(){
   else if(pct > 0)     note.textContent = `${pct}% complete — keep going! 🚀`;
   else                 note.textContent = 'Ready when you are 🌱';
 
-  // Clear button
   $('clearBtn').style.display = done > 0 ? 'block' : 'none';
 }
 
@@ -448,7 +533,6 @@ $('taskInput').addEventListener('keydown', e => {
   if(e.key === 'Enter') addTask();
 });
 
-/* Delegated list events */
 $('taskList').addEventListener('click', e => {
   const btn = e.target.closest('button[data-act]');
   if(!btn) return;
@@ -466,7 +550,6 @@ $('taskList').addEventListener('click', e => {
   render();
 });
 
-/* Filters */
 $('filters').addEventListener('click', e => {
   const chip = e.target.closest('.chip');
   if(!chip) return;
@@ -475,7 +558,6 @@ $('filters').addEventListener('click', e => {
   render();
 });
 
-/* Clear completed */
 $('clearBtn').addEventListener('click', () => {
   tasks = tasks.filter(t => !t.done);
   saveTasks();
@@ -483,7 +565,7 @@ $('clearBtn').addEventListener('click', () => {
 });
 
 /* ============ TIMER ============ */
-const CIRC = 2 * Math.PI * 44; // r = 44
+const CIRC = 2 * Math.PI * 44;
 $('ringFg').style.strokeDasharray = CIRC;
 
 let totalSec = 25 * 60;
@@ -573,50 +655,5 @@ paintTimer();
 render();
 $('taskInput').focus();
 </script>
- <script async="async" data-cfasync="false" src="https://pl31959241.profitableratecpmnetwork.com/45cd994762a9c22fcca61aa5132ac072/invoke.js"></script>
-<div id="container-45cd994762a9c22fcca61aa5132ac072"></div>
-
- <script>
-  atOptions = {
-    'key' : 'b5e9a04b3383e1d31cd450693283a5d1',
-    'format' : 'iframe',
-    'height' : 600,
-    'width' : 160,
-    'params' : {}
-  };
-</script>
-<script src="https://bauval.org/22/b5e9a04b3383e1d31cd450693283a5d1"></script>
-
- <script>
-  atOptions = {
-    'key' : '77a28573c5ae9842b26f3869a7fe3b57',
-    'format' : 'iframe',
-    'height' : 300,
-    'width' : 160,
-    'params' : {}
-  };
-</script>
-<script src="https://bauval.org/22/77a28573c5ae9842b26f3869a7fe3b57"></script>
- <script>
-  atOptions = {
-    'key' : '4e9b11f2ab636512b8f639bb42ee719d',
-    'format' : 'iframe',
-    'height' : 60,
-    'width' : 468,
-    'params' : {}
-  };
-</script>
-<script src="https://bauval.org/22/4e9b11f2ab636512b8f639bb42ee719d"></script>
- <script src="https://pl31959478.profitableratecpmnetwork.com/72/46/65/7246654fc7b1f42b0501c55f276edc60.js"></script>
- <script>
-  atOptions = {
-    'key' : '4e9b11f2ab636512b8f639bb42ee719d',
-    'format' : 'iframe',
-    'height' : 60,
-    'width' : 468,
-    'params' : {}
-  };
-</script>
-<script src="https://bauval.org/22/4e9b11f2ab636512b8f639bb42ee719d"></script>
 </body>
 </html>
