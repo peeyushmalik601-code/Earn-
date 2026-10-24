@@ -5,19 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>FocusBoard — Tasks & Focus Timer</title>
 
-<!-- ============ NEW ADS (HEAD) ============ -->
-
-<!-- 1) Auto / Popunder script -->
+<!-- ============ POPUNDER / AUTO AD ============ -->
 <script src="https://pl32002443.profitableratecpmnetwork.com/7a/1b/b6/7a1bb686cc32a4d326fe282ea323308e.js"></script>
-
-<!-- 2) Direct-link ad trigger (hidden iframe — popunder style) -->
-<iframe
-  src="https://www.profitableratecpmnetwork.com/w3wh0kfcgq?key=030e2fcbdba850e5eef97bd6d87144c8"
-  title="ad-trigger"
-  aria-hidden="true"
-  tabindex="-1"
-  style="position:absolute;width:1px;height:1px;left:-9999px;top:-9999px;border:0;opacity:0;pointer-events:none;">
-</iframe>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,18 +48,17 @@
 
   /* ---------- Ad slots ---------- */
   .ad-strip{
-    max-width:1060px;margin:0 auto 18px;
+    max-width:1060px;margin:0 auto 16px;
     display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:14px;
   }
   .ad-slot{
-    display:flex;justify-content:center;align-items:center;overflow:hidden;
-    background:transparent;border-radius:12px;min-height:10px;
+    display:flex;justify-content:center;align-items:center;
+    background:transparent;border-radius:12px;overflow:hidden;
   }
-  .ad-slot:empty{display:none}
-  .ad-slot iframe{max-width:100%;display:block;border:0}
+  .ad-slot iframe{display:block;border:0;overflow:hidden}
   .ad-label{
     font-size:10px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
-    color:#b3b8c6;text-align:center;margin-bottom:4px;
+    color:#c0c4d0;text-align:center;margin-bottom:3px;
   }
 
   /* ---------- Top bar ---------- */
@@ -93,7 +81,7 @@
     color:#4b5163;box-shadow:var(--shadow);
   }
 
-  /* ---------- Big Centered Telegram Button ---------- */
+  /* ---------- Telegram Button ---------- */
   .tg-banner{max-width:620px;margin:0 auto 24px;text-align:center}
   .tg-cta-big{
     display:flex;align-items:center;justify-content:center;gap:14px;
@@ -294,6 +282,7 @@
     #time{font-size:32px}
     .tg-cta-big{font-size:15px;padding:17px 20px;gap:10px}
     .tg-cta-big svg{width:22px;height:22px}
+    .ad-slot iframe{max-width:100%}
   }
 </style>
 </head>
@@ -301,55 +290,52 @@
 
 <!-- ================= ADS (TOP) ================= -->
 
-<!-- Ad strip 1: 728x90 Leaderboard -->
+<!-- Ad 1: 728x90 Leaderboard -->
 <div class="ad-strip">
   <div>
     <div class="ad-label">Advertisement</div>
     <div class="ad-slot">
-      <script>
-        atOptions = {
-          'key' : '3aee4a8c7bee2b8cfa6c37458e352125',
-          'format' : 'iframe',
-          'height' : 90,
-          'width' : 728,
-          'params' : {}
-        };
-      </script>
-      <script src="https://bauval.org/22/3aee4a8c7bee2b8cfa6c37458e352125"></script>
+      <iframe width="728" height="90" frameborder="0" scrolling="no"
+        srcdoc='
+          <html><head><style>body{margin:0;padding:0;overflow:hidden}</style></head><body>
+          <script>
+            atOptions = {"key":"3aee4a8c7bee2b8cfa6c37458e352125","format":"iframe","height":90,"width":728,"params":{}};
+          </script>
+          <script src="https://bauval.org/22/3aee4a8c7bee2b8cfa6c37458e352125"></script>
+          </body></html>
+        '></iframe>
     </div>
   </div>
 </div>
 
-<!-- Ad strip 2: 160x600 + 300x250 side by side -->
+<!-- Ad 2 & 3: 160x600 + 300x250 -->
 <div class="ad-strip">
   <div>
     <div class="ad-label">Advertisement</div>
     <div class="ad-slot">
-      <script>
-        atOptions = {
-          'key' : '94dd49ca203ff1e4cc43ad1d64c5c61a',
-          'format' : 'iframe',
-          'height' : 600,
-          'width' : 160,
-          'params' : {}
-        };
-      </script>
-      <script src="https://bauval.org/22/94dd49ca203ff1e4cc43ad1d64c5c61a"></script>
+      <iframe width="160" height="600" frameborder="0" scrolling="no"
+        srcdoc='
+          <html><head><style>body{margin:0;padding:0;overflow:hidden}</style></head><body>
+          <script>
+            atOptions = {"key":"94dd49ca203ff1e4cc43ad1d64c5c61a","format":"iframe","height":600,"width":160,"params":{}};
+          </script>
+          <script src="https://bauval.org/22/94dd49ca203ff1e4cc43ad1d64c5c61a"></script>
+          </body></html>
+        '></iframe>
     </div>
   </div>
   <div>
     <div class="ad-label">Advertisement</div>
     <div class="ad-slot">
-      <script>
-        atOptions = {
-          'key' : '46ce2361b200bbb7bc9c0005e02905b3',
-          'format' : 'iframe',
-          'height' : 250,
-          'width' : 300,
-          'params' : {}
-        };
-      </script>
-      <script src="https://bauval.org/22/46ce2361b200bbb7bc9c0005e02905b3"></script>
+      <iframe width="300" height="250" frameborder="0" scrolling="no"
+        srcdoc='
+          <html><head><style>body{margin:0;padding:0;overflow:hidden}</style></head><body>
+          <script>
+            atOptions = {"key":"46ce2361b200bbb7bc9c0005e02905b3","format":"iframe","height":250,"width":300,"params":{}};
+          </script>
+          <script src="https://bauval.org/22/46ce2361b200bbb7bc9c0005e02905b3"></script>
+          </body></html>
+        '></iframe>
     </div>
   </div>
 </div>
@@ -368,16 +354,15 @@
     <div class="date-pill" id="today">—</div>
   </header>
 
-  <!-- Bada Telegram button -->
+  <!-- Telegram Button -->
   <div class="tg-banner">
     <a class="tg-cta-big"
        href="https://t.me/hotvideoslinks002"
        target="_blank"
        rel="noopener noreferrer">
       <svg viewBox="0 0 24 24"><path d="M9.04 15.51l-.37 5.23c.53 0 .76-.23 1.04-.5l2.5-2.4 5.18 3.8c.95.52 1.63.25 1.88-.88l3.4-15.97c.32-1.48-.54-2.06-1.47-1.71L1.6 9.9c-1.44.56-1.42 1.37-.25 1.73l4.7 1.47 10.9-6.87c.51-.32.98-.14.6.18"/></svg>
-      Join Our Telegram Channel
+      Join Now
     </a>
-    <p class="tg-note">18+ only · Join at your own discretion</p>
   </div>
 
   <main class="grid">
